@@ -1,4 +1,6 @@
 import type { Metadata } from 'next'
+import 'bootstrap-icons/font/bootstrap-icons.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import { authOptions } from '../../pages/api/auth/[...nextauth]'
 import { getServerSession } from 'next-auth'
 import { Inter } from 'next/font/google'
@@ -22,9 +24,9 @@ export default async function RootLayout({
   
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className}`}>
         <SessionProvider session={session}>
-          {!session ? (<Login/>) : (<Home/>)}
+          <Home>{children}</Home>
         </SessionProvider>        
       </body>
     </html>

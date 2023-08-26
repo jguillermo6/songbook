@@ -1,6 +1,7 @@
 'use client';
 import { Session } from "next-auth";
 import { SessionProvider as Provider } from 'next-auth/react'
+import AuthClient from "./auth-validation";
 
 type Props = {
     children: React.ReactNode;
@@ -9,8 +10,10 @@ type Props = {
 
 export default function SessionProvider({children, session}: Props){
     return(
-        <Provider>
-            {children}
+        <Provider session={session}>
+            <AuthClient>
+                {children}
+            </AuthClient>
         </Provider>
     );
 }
